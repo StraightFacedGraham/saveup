@@ -1,0 +1,43 @@
+.budget-tracker {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* box around the transactions */
+.transactions ul {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* rows of transaction table */
+.transactions li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* remove last line */
+.transactions li:last-child {
+  border-bottom: none;
+}
+
+/* spacing between rows of transaction table */
+.transactions h4, .transactions p {
+  margin: 0;
+}
+
+/* profile container */
+.profile {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+}

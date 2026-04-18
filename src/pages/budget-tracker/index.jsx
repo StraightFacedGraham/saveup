@@ -1,4 +1,3 @@
-
 import { useAddTransaction } from "../../hooks/useAddTransaction.js";
 import { useState } from "react";
 import { useGetTransactions } from "../../hooks/useGetTransactions.js";
@@ -6,8 +5,13 @@ import { useGetUserInfo } from "../../hooks/useGetUserInfo.js";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase-config.js";
-
 import "./styles.css";
+
+// ChartJS imports
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export const BudgetTracker = () => {
@@ -35,6 +39,18 @@ export const BudgetTracker = () => {
             }
     };
 
+    const chartData = {
+        labels: ['Expenses', 'Income'],
+        datasets: [
+            {
+                label: 'Amount (£)',
+                data: [expenses, income],
+                backgroundColor: ['red', 'green'],
+                borderColor: ['red', 'green'],
+            },
+        ],
+    };
+
     return (
         <>
             <div className="budget-tracker">
@@ -56,6 +72,10 @@ export const BudgetTracker = () => {
                     <div className="expenses">
                         <h4> Expenses</h4>
                         <p> £{expenses}</p>
+                    </div>
+
+                    <div className="chart-container">
+                        <Doughnut data={chartData} />
                     </div>
 
                     <form className="add-transaction" onSubmit={onSubmit}>

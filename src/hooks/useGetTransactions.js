@@ -14,8 +14,7 @@ export const useGetTransactions = () => {
 
     const getTransactions = async () => {
         try {
-            const queryTransactions = query(transactionCollectionRef, where("userID", "==", userID),
-            orderBy("createdAt"));
+            const queryTransactions = query(transactionCollectionRef, where("userID", "==", userID), orderBy("createdAt"));
 
             onSnapshot(queryTransactions, (snapshot) => {
 

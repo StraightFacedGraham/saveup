@@ -5,6 +5,7 @@ import { useGetUserInfo } from "../../hooks/useGetUserInfo.js";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase-config.js";
+import { GoalTracker } from "../../components/goalTracker.jsx";
 import "./styles.css";
 
 // ChartJS imports
@@ -12,7 +13,6 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
 
 export const BudgetTracker = () => {
     const { addTransaction } = useAddTransaction();
@@ -82,7 +82,7 @@ export const BudgetTracker = () => {
                     <form className="add-transaction" onSubmit={onSubmit}>
                         <input type="text" placeholder="Description" required onChange={(e) => setDescription(e.target.value)} />
                         <input type="number" placeholder="Amount" required onChange={(e) => setTransactionAmount(e.target.value)} />
-                        <select value={category} onChange={(e) => setCategory(e.target.value)} required>
+                        <select value={category} required onChange={(e) => setCategory(e.target.value)}>
                             <option value="">Select Category</option>
                             <option value="Food">Food</option>
                             <option value="Transportation">Transportation</option>
@@ -128,6 +128,9 @@ export const BudgetTracker = () => {
                         })}
                     </ul>
                 </div>
+
+                <GoalTracker />
+                
 
             </div>
         </>

@@ -23,10 +23,11 @@ export const BudgetTracker = () => {
     const [description, setDescription] = useState("");
     const [transactionAmount, setTransactionAmount] = useState(0);
     const [transactionType, setTransactionType] = useState("expense");
+    const [category, setCategory] = useState("");
 
     const onSubmit = (e) => {
         e.preventDefault();
-        addTransaction({description, transactionAmount, transactionType});
+        addTransaction({description, transactionAmount, transactionType, category});
     };
 
     const signUserOut = async () => {
@@ -81,6 +82,15 @@ export const BudgetTracker = () => {
                     <form className="add-transaction" onSubmit={onSubmit}>
                         <input type="text" placeholder="Description" required onChange={(e) => setDescription(e.target.value)} />
                         <input type="number" placeholder="Amount" required onChange={(e) => setTransactionAmount(e.target.value)} />
+                        <select value={category} onChange={(e) => setCategory(e.target.value)} required>
+                            <option value="">Select Category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Salary">Salary</option>
+                            <option value="Other">Other</option>
+                        </select>
 
                         <input type="radio" id="expense" name="transaction-type" value="expense" onChange={(e) => setTransactionType(e.target.value)} checked={transactionType === "expense"} />
                         <label htmlFor="expense"> Expense</label>
@@ -105,13 +115,13 @@ export const BudgetTracker = () => {
                     <h3> Transactions</h3>
                     <ul>
                         {transactions.map((transaction) => {
-                            const { description, transactionAmount, transactionType } = transaction;
+                            const { description, transactionAmount, transactionType, category } = transaction;
                             return (
                                 <li>
                                     <h4> {description} </h4>
                                     <p> 
                                         {" "}
-                                        £{transactionAmount}  <label style={{color: transactionType  === "expense" ? "red" : "green"}}> {transactionType} </label>
+                                        £{transactionAmount}  <label style={{color: transactionType  === "expense" ? "red" : "green"}}> {category} {transactionType} </label>
                                     </p>
                                 </li>
                             )

@@ -6,12 +6,13 @@ export const useAddTransaction = () => {
     const transactionCollectionRef = collection(db, "transactions");
     const { userID } = useGetUserInfo();
 
-    const addTransaction = async ({ description, transactionAmount, transactionType }) => {
+    const addTransaction = async ({ description, transactionAmount, transactionType, category }) => {
         await addDoc(transactionCollectionRef, {
             userID,
             description,
             transactionAmount,
             transactionType,
+            category,
             createdAt: serverTimestamp()
         });
     };

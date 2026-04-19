@@ -11,7 +11,6 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Auth />} />
           <Route path="/budget-tracker" element={<BudgetTracker />} />
-          <Route path="/goal-tracker" element={<GoalTracker />} />
         </Routes>
       </Router>
     </div>

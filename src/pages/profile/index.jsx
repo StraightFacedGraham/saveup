@@ -1,9 +1,14 @@
 import { Navbar } from "../../components/navbar.jsx";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo.js";
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../config/firebase-config.js";
+import { useUpdateLevel } from "../../hooks/useUpdateLevel.js";
 import "./styles.css";
 
 export const Profile = () => {
-    const { name, profilePicture } = useGetUserInfo();
+    const { userID, name, profilePicture } = useGetUserInfo();
+    const { calculateLevel } = useUpdateLevel();
 
     return (
         <>

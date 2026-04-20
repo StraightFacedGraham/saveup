@@ -1,8 +1,8 @@
-
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Auth } from "./pages/auth/index";
 import { BudgetTracker } from "./pages/budget-tracker/index";
+import { Profile } from "./pages/profile/index";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Auth />} />
           <Route path="/budget-tracker" element={<BudgetTracker />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </div>

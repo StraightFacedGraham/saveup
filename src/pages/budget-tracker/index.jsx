@@ -1,11 +1,8 @@
 import { useAddTransaction } from "../../hooks/useAddTransaction.js";
 import { useState } from "react";
 import { useGetTransactions } from "../../hooks/useGetTransactions.js";
-import { useGetUserInfo } from "../../hooks/useGetUserInfo.js";
-import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../../config/firebase-config.js";
 import { GoalTracker } from "../../components/goalTracker.jsx";
+import { Navbar } from "../../components/navbar.jsx";
 import "./styles.css";
 
 // ChartJS imports
@@ -17,8 +14,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export const BudgetTracker = () => {
     const { addTransaction } = useAddTransaction();
     const { transactions, income, expenses, balance } = useGetTransactions();
-    const { profilePicture } = useGetUserInfo();
-    const navigate = useNavigate();
     
     const [description, setDescription] = useState("");
     const [transactionAmount, setTransactionAmount] = useState(0);
@@ -28,16 +23,6 @@ export const BudgetTracker = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         addTransaction({description, transactionAmount, transactionType, category});
-    };
-
-    const signUserOut = async () => {
-        try {
-            await signOut(auth);
-            localStorage.clear();
-            navigate("/");
-            } catch(err) {
-                console.error(err);
-            }
     };
 
     const chartData = {
@@ -54,6 +39,8 @@ export const BudgetTracker = () => {
 
     return (
         <>
+            <Navbar />
+
             <div className="budget-tracker">
 
                 <div className="container">
@@ -100,16 +87,6 @@ export const BudgetTracker = () => {
                         <button type="submit"> Add Transaction</button>
                     </form>
                 </div>
-
-                {profilePicture && (
-                    <div className="profile"> 
-                    {" "}
-                    <img className="profile-picture" src={profilePicture} />
-
-                    <button className="sign-out-button" onClick={signUserOut}>
-                        Sign Out
-                    </button>
-                </div>)}
 
                 <div className="transactions">
                     <h3> Transactions</h3>

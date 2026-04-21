@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useGetTransactions } from "../../hooks/useGetTransactions.js";
 import { GoalTracker } from "../../components/goalTracker.jsx";
 import { Navbar } from "../../components/navbar.jsx";
+import { Missions } from "../../components/missions.jsx";
 import "./styles.css";
 
 // ChartJS imports
@@ -43,6 +44,7 @@ export const BudgetTracker = () => {
 
             <div className="budget-tracker">
 
+                <div className="main-container">
                 <div className="container">
                     <h1> SaveUp</h1>
                     <div className="balance">
@@ -62,9 +64,7 @@ export const BudgetTracker = () => {
                         <p> £{expenses}</p>
                     </div>
 
-                    <div className="chart-container">
-                        <Doughnut data={chartData} />
-                    </div>
+                    
 
                     <form className="add-transaction" onSubmit={onSubmit}>
                         <input type="text" placeholder="Description" required onChange={(e) => setDescription(e.target.value)} />
@@ -105,10 +105,20 @@ export const BudgetTracker = () => {
                         })}
                     </ul>
                 </div>
-
-                <GoalTracker />
+                </div>
                 
+                <div className="chart-container">
+                    <Doughnut data={chartData} />
+                </div>
 
+                <div className="missions-wrapper">
+                    <Missions />
+                </div>
+
+            </div>
+
+            <div className="goal-tracker-wrapper">
+                <GoalTracker />
             </div>
         </>
     );

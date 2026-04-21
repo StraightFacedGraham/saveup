@@ -73,3 +73,63 @@
     background-color: red;
     color: white;
 }
+
+/* Missions */
+.missions-wrapper {
+    margin-top: 40px;
+    
+}
+
+.missions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mission-card {
+    background-color: white;
+    border: 1px solid whitesmoke;
+    border-left: 4px solid blue;
+    border-radius: 8px;
+    padding: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+.mission-card.completed {
+    border-left: 4px solid green; 
+    background-color: white;
+    opacity: 0.8; 
+}
+
+.mission-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mission-desc {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #212529;
+}
+
+.mission-card.completed .mission-desc {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.mission-xp {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffc107; /* Gold color for XP */
+}
+
+.mission-status {
+    font-size: 20px;
+}
+
+/* Goal tracker */
+.goal-tracker {
+    padding: 20px;
+    width: 100%;
+}

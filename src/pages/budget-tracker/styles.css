@@ -1,6 +1,17 @@
 .budget-tracker {
-  max-width: 600px;
-  margin: auto;
+  display: flex;
+
+}
+
+.main-container {
+  text-align: left;
+  padding-left: 40px;
+}
+
+.chart-container {
+  width: 700px;
+  height: 700px;
+  align-items: center;
 }
 
 /* box around the transactions */
@@ -19,7 +30,7 @@
 .transactions li {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 10px;
   border-bottom: 1px solid grey;
 }
 

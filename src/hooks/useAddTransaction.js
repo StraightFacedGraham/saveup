@@ -7,7 +7,7 @@ import { useMissions } from "./useMissions.js";
 export const useAddTransaction = () => {
     const transactionCollectionRef = collection(db, "transactions");
     const { userID } = useGetUserInfo();
-    const { addXP } = useUpdateLevel();
+    const { gainXP } = useUpdateLevel();
     const { completeMission } = useMissions();
 
     const addTransaction = async ({ description, transactionAmount, transactionType, category }) => {
@@ -20,7 +20,7 @@ export const useAddTransaction = () => {
             createdAt: serverTimestamp()
         });
 
-        await addXP(10);
+        await gainXP(10);
         await completeMission(1);
     };
     return { addTransaction };

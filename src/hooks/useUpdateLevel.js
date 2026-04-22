@@ -1,7 +1,6 @@
 import { doc, updateDoc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config";
 import { useGetUserInfo } from "./useGetUserInfo.js";
-import { use } from "react";
 
 export const useUpdateLevel = () => {
     const { userID } = useGetUserInfo();
@@ -18,7 +17,7 @@ export const useUpdateLevel = () => {
         return level;
     };
 
-    const addXP = async (xpReward) => {
+    const gainXP = async (xpReward) => {
         const userDocRef = doc(db, "users", userID);
 
         try {
@@ -55,6 +54,6 @@ export const useUpdateLevel = () => {
         }
     };
 
-    return { addXP, calculateLevel };
+    return { gainXP, calculateLevel };
     
 };

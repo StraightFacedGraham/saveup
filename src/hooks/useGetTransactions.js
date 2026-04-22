@@ -46,7 +46,8 @@ export const useGetTransactions = () => {
                 setBalance(totalIncome - totalExpenses);
             });
 
-        } catch (err) {
+        } 
+        catch (err) {
             console.error(err);
         }
         

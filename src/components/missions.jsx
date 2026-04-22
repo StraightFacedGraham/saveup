@@ -10,7 +10,7 @@ export const Missions = () => {
     const [completedMissions, setCompletedMissions] = useState([]);
 
     useEffect(() => {
-        const completedMissions = async () => {
+        const fetchMissions = async () => {
 
             try {
                 const userDoc = await getDoc(doc(db, "users", userID));
@@ -23,11 +23,11 @@ export const Missions = () => {
                 console.error("Error fetching missions:", err);
             }
         };
-        completedMissions();
-        window.addEventListener("missionsUpdated", completedMissions);
+        fetchMissions();
+        window.addEventListener("missionsUpdated", fetchMissions);
         
         return () => {
-            window.removeEventListener("missionsUpdated", completedMissions);
+            window.removeEventListener("missionsUpdated", fetchMissions);
         };
 
     }, [userID]);
@@ -44,12 +44,12 @@ export const Missions = () => {
                         <div key={mission.id} className={`mission-card ${isComplete ? 'completed' : ''}`}>
                             <div className="mission-content">
                                 <div>
-                                    <h4 className="mission-desc">{mission.description}</h4>
+                                    <h4 className="mission-description">{mission.description}</h4>
                                     <span className="mission-xp">+{mission.xpReward} XP</span>
                                 </div>
                                 
                                 <div className="mission-status">
-                                    {isComplete ? "Yes" : "In Progress"}
+                                    {isComplete ? "Completed" : "In Progress"}
                                 </div>
                             </div>
                         </div>

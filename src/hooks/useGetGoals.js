@@ -27,7 +27,8 @@ export const useGetGoals = () => {
                 setGoals(docs);
             });
 
-        } catch (err) {
+        } 
+        catch (err) {
             console.error(err);
         }
         

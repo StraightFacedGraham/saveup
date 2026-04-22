@@ -1,4 +1,4 @@
-import { link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetUserInfo } from "../hooks/useGetUserInfo.js";
 import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase-config.js";
@@ -25,13 +25,12 @@ export const Navbar = () => {
             </div>
 
             <div className="navbar-links">
-                <a href="/budget-tracker">Dashboard</a>
-                
-                <a href="/profile">Profile</a>
+                <Link to="/budget-tracker">Dashboard</Link>
+                <Link to="/profile">Profile</Link>
             </div>
 
             <div className="navbar-signout">
-                {profilePicture ? (<img src={profilePicture} alt="img" className="profile-picture" referrerPolicy="no-referrer" />) : null}
+                <img src={profilePicture} alt="img" className="profile-picture" referrerPolicy="no-referrer" />
                 <button onClick={signUserOut}>Sign Out</button>
             </div>
 

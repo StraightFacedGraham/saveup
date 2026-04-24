@@ -66,7 +66,7 @@ export const Profile = () => {
             </div>
             <div className="xp-container">
                     <div className="xp-header">
-                        <strong>Total XP: {xp}</strong>
+                        <strong>Level: {level}</strong>
                         <span>{xpToNextLevel - xp} XP to Level {level + 1}</span>
                     </div>
                     

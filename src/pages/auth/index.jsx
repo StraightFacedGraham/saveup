@@ -64,6 +64,7 @@ export const Auth = () => {
 
     return (
         <div className="login-page">
+            <p>Sign in</p>
             <form onSubmit={isSignUp ? emailSignUp : emailSignIn} style={{ display: "flex", flexDirection: "column", gap: "10px", width: "300px", marginBottom: "20px" }}>
                 <input
                     type="email"
@@ -82,7 +83,7 @@ export const Auth = () => {
                 <button type="submit">Sign In</button>
             </form>
 
-            <p>Sign in</p>
+            
 
             {loginError && <p style={{ color: "red" }}>{loginError}</p>}
 
